@@ -37,6 +37,10 @@ export declare class ASTPseudoClass extends ASTRule {
     name: string;
     constructor(name: string);
 }
+export declare class ASTPseudoElement extends ASTRule {
+    name: string;
+    constructor(name: string);
+}
 export declare class ASTAttribute extends ASTRule {
     caseSensitive: boolean;
     name: string;

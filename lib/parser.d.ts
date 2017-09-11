@@ -11,7 +11,7 @@ export declare class Parser {
     private parseRule();
     private parseClass();
     private parseId();
-    private parsePseudoClass();
+    private parsePseudoClassOrPseudoElement();
     private parseElement();
     private parseAttribute();
     private parseDescendant(left);

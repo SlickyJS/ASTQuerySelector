@@ -4,6 +4,11 @@ import {Tokenizer, TokenType} from './tokenizer';
 import * as _ from './ast';
 
 
+const PSEUDO_ELEMENTS: Array<string> = [
+	'before', 'after',
+];
+
+
 export class Parser
 {
 
@@ -113,7 +118,7 @@ export class Parser
 		}
 
 		if (this.tokenizer.isCurrentToken(TokenType.Punctuation, ':')) {
-			return this.parsePseudoClass();
+			return this.parsePseudoClassOrPseudoElement();
 		}
 
 		if (this.tokenizer.isCurrentToken(TokenType.Punctuation, '[')) {
@@ -140,9 +145,20 @@ export class Parser
 	}
 
 
-	private parsePseudoClass(): _.ASTPseudoClass
+	private parsePseudoClassOrPseudoElement(): _.ASTPseudoClass|_.ASTPseudoElement
 	{
 		this.tokenizer.matchToken(TokenType.Punctuation, ':');
+
+		const isColon = this.tokenizer.isCurrentToken(TokenType.Punctuation, ':');
+
+		if (isColon || this.tokenizer.isCurrentToken(TokenType.Name, ...PSEUDO_ELEMENTS)) {
+			if (isColon) {
+				this.tokenizer.matchToken(TokenType.Punctuation, ':');
+			}
+
+			return new _.ASTPseudoElement(this.tokenizer.matchToken(TokenType.Name).value);
+		}
+
 		return new _.ASTPseudoClass(this.tokenizer.matchToken(TokenType.Name).value);
 	}
 

@@ -152,6 +152,23 @@ export class ASTPseudoClass extends ASTRule
 }
 
 
+export class ASTPseudoElement extends ASTRule
+{
+
+
+	public name: string;
+
+
+	constructor(name: string)
+	{
+		super();
+
+		this.name = name;
+	}
+
+}
+
+
 export class ASTAttribute extends ASTRule
 {
 
