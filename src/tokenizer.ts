@@ -19,7 +19,7 @@ export declare interface Token
 
 
 const PUNCTUATION = [
-	'.', ',', ':', '#', '[', ']'
+	'.', ',', ':', '#', '[', ']', '(', ')',
 ];
 
 const OPERATORS = [

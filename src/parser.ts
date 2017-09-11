@@ -159,7 +159,15 @@ export class Parser
 			return new _.ASTPseudoElement(this.tokenizer.matchToken(TokenType.Name).value);
 		}
 
-		return new _.ASTPseudoClass(this.tokenizer.matchToken(TokenType.Name).value);
+		const pseudoClass = new _.ASTPseudoClass(this.tokenizer.matchToken(TokenType.Name).value);
+
+		if (this.tokenizer.isCurrentToken(TokenType.Punctuation, '(')) {
+			this.tokenizer.matchToken(TokenType.Punctuation, '(');
+			pseudoClass.fn = this.parseSelector();
+			this.tokenizer.matchToken(TokenType.Punctuation, ')');
+		}
+
+		return pseudoClass;
 	}
 
 

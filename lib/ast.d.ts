@@ -35,7 +35,8 @@ export declare class ASTId extends ASTRule {
 }
 export declare class ASTPseudoClass extends ASTRule {
     name: string;
-    constructor(name: string);
+    fn: ASTSelector;
+    constructor(name: string, fn?: ASTSelector);
 }
 export declare class ASTPseudoElement extends ASTRule {
     name: string;

@@ -141,12 +141,15 @@ export class ASTPseudoClass extends ASTRule
 
 	public name: string;
 
+	public fn: ASTSelector;
 
-	constructor(name: string)
+
+	constructor(name: string, fn?: ASTSelector)
 	{
 		super();
 
 		this.name = name;
+		this.fn = fn;
 	}
 
 }

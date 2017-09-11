@@ -81,6 +81,33 @@ describe('#Tokenizer.pseudoClasses', () => {
 			]);
 		});
 
+		it('should tokenize :not pseudo class', () => {
+			let tokens = Tokenizer.createFromString(':not(div)').tokenize();
+
+			expect(tokens).to.be.eql([
+				{
+					type: TokenType.Punctuation,
+					value: ':',
+				},
+				{
+					type: TokenType.Name,
+					value: 'not',
+				},
+				{
+					type: TokenType.Punctuation,
+					value: '(',
+				},
+				{
+					type: TokenType.Name,
+					value: 'div',
+				},
+				{
+					type: TokenType.Punctuation,
+					value: ')',
+				},
+			]);
+		});
+
 	});
 
 });
