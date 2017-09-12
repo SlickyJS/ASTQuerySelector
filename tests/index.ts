@@ -12,3 +12,4 @@ import './tests/parser.pseudoElements';
 import './tests/parser.attr';
 import './tests/parser.combinators';
 import './tests/parser';
+import './tests/ast';
