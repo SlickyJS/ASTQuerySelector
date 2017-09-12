@@ -5,7 +5,8 @@ import * as _ from './ast';
 
 
 const PSEUDO_ELEMENTS: Array<string> = [
-	'before', 'after',
+	'before', 'after', 'cue', 'first-letter', 'first-line', 'selection',
+	'backdrop', 'placeholder', 'marker', 'spelling-error', 'grammar-error',
 ];
 
 
